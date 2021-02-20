@@ -19,7 +19,6 @@ function setup() {
 	groundObject=new ground(width/2,670,width,20);
 	dustbinObj=new dustbin(1200,650);
     paper = new Paper(100,height/2,50,50,'paper.png');
-	
 	Engine.run(engine);
 	
 	
@@ -39,7 +38,7 @@ function draw() {
 	  throwing(mouseX,mouseY,10,paper);
   }
  paper.display();
- console.log(paper.body)
+ 
   groundObject.display();
   dustbinObj.display();
   
@@ -47,7 +46,8 @@ function draw() {
 function throwing(x,y,force,obj){
 	var xvel1 = x-obj.body.position.x;
 	var yvel1 = y-obj.body.position.y;
-	var xvel2 = (xvel1/abs(xvel1))* force;
-	var yvel2 = (yvel1/abs(yvel1))* force;
+	var xvel2 = xvel1/ force;
+	var yvel2 = yvel1/ force;
 	Matter.Body.setVelocity(obj.body, createVector(xvel2,yvel2))
+  console.log(xvel2)
 }
